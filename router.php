@@ -19,3 +19,5 @@ elseif (isset($_GET)){
 
     $ctrl->$_GET['func']($_GET);
 }
+
+cfgdwfbwdbwb
