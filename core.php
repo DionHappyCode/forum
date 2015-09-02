@@ -32,4 +32,3 @@ function myTruncate($string, $limit, $break=" ", $pad="...")
 //Ouverture des sessions
 session_start();
 
-dfdsfsgf
