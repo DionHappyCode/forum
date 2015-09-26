@@ -42,7 +42,7 @@
                     <a data-container="body" data-toggle="popover" title="Cliquez sur l'article pour voir les reponses" data-placement="bottom" 
                             data-content="<ol><?php foreach ($artreps as $artrep){ ?>
                             <li><a href='article.php?id=<?php echo $artrep->getId(); ?>'><?php echo $artrep->getTitre(); ?></a></li><?php }?></ol>">
-                            <span class="glyphicon glyphicon-envelope" data-toggle="tooltip" data-placement="bottom" 
+                            <span class="glyphicon glyphicon-inbox" data-toggle="tooltip" data-placement="bottom" 
                             title="Vous avez <?php echo $repctrl->getNbReponses($_SESSION['id']); ?> nouvelles reponses">
                             <span class="badge-notify"><?php echo $repctrl->getNbReponses($_SESSION['id']); ?></span>
                             </span>
