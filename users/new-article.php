@@ -7,7 +7,7 @@
     include_once ('../services/keepAlive.php');
     if(isset($_GET['m'])){
           
-        $decon = $ctrl->dec();
+        $decon = $ctrl->dec(date("Y-m-d H:i:s"), $_SESSION['id']);
        
        header('Location: index.php');
     }
