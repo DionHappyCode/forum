@@ -16,19 +16,22 @@ and open the template in the editor.
 <html>
     <head>
         <title>Se Connecter</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+       <?php include_once '../commun/head.php'; ?>
     </head>
     <body>
         <div class="wrapper">
-            <h1 class="titre">My Forum</h1>
-            <?php include ("vueMessage.php");?>
-            <div class="connexion">
-                <?php include ("vueMessage.php");?>
-                <h2>Connexion</h2>
-                <form action="../router.php?ctrl=Login&AMP;func=LogIn" method="POST" class="form">
+            <?php include ("../commun/menu.php"); ?>
+            
+            <?php include_once '../commun/header.php'; ?>
+            <div class="main">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="soutitre text-center">
+                           Connexion
+                        </h3>
+                    </div>
+                </div>
+                <form action="../router.php?ctrl=Login&AMP;func=LogIn" method="POST" class="form text-center">
                     <p><label>
                             Votre login :
                         </label>
@@ -40,7 +43,7 @@ and open the template in the editor.
                         <input type="password" name="password" />
                     </p>
                     <p>
-                        <input type="submit" name="envoyer" value="Valider"/>
+                        <input type="submit" name="envoyer" value="Valider" class="middle"/>
                         <input type="reset" name="annuler" value="Annuler"/>
                     </p>
                 </form>

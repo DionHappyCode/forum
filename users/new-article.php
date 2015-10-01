@@ -29,17 +29,22 @@ and open the template in the editor.
              <?php include_once '../commun/header.php'; ?> 
             
             <div class="main">    
-               
+               <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="soutitre text-center">
+                           <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+                            Ajouter un nouvel article : 
+                        </h3>
+                    </div>
+                </div>
                 <form method="post" action="../router.php?ctrl=Article&func=newArticle" class="form">
-                    <fieldset>
-                        <legend>Ajoutez un nouvel article</legend>
-                        <p><label>Titre de l'article</label><input type="text" name="titre" size="70"/></p>
-                        <p><label>Description de l'article</label><textarea name="contenu" cols="90" rows="10"></textarea></p>
-                        <input type="hidden" name="auteur" /><br/>
-                        <input type="hidden" name="dateajout" /><br/>
-                        <input type="submit" name="submit" value="Inserer" />
-                        <input type="reset" name="annuler" id="annuler" value="Annuler"/> 
-                    </fieldset>
+                    <p><label>Titre de l'article</label><input type="text" name="titre" size="70"/></p>
+                    <p><label>Description de l'article</label><textarea name="contenu" cols="90" rows="10"></textarea></p>
+                    <input type="hidden" name="auteur" /><br/>
+                    <input type="hidden" name="dateajout" /><br/>
+                    <input type="submit" name="submit" value="Inserer" />
+                    <input type="reset" name="annuler" id="annuler" value="Annuler"/> 
+                    
                 </form>
             </div>
         </div>
