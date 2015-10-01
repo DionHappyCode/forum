@@ -12,6 +12,7 @@
  * @author Stagiaire
  */
 require_once('f:/wamp/www/blog/services/Message.php');
+require_once('f:/wamp/www/blog/services/Search.php');
 
 class ArticleController {
     
@@ -24,7 +25,7 @@ class ArticleController {
 //Afficher tous les articles
     public function recupAllArticles(){
         $articles = $this->manager->getAll();
-          
+        
         return $articles;
     }
 //Afficher le nombre total des articles
@@ -61,10 +62,10 @@ class ArticleController {
 //Creation d'un nouvel article    
     public function newArticle($data) {
         
-        $titre = strip_tags($data['titre']);
-        $contenu = strip_tags($data['contenu']);
-        $auteur = strip_tags($_SESSION['id']);
-        $dateajout = strip_tags(date("Y-m-d H:i:s")); 
+        $titre = cleanInput($data['titre']);
+        $contenu = cleanInput($data['contenu']);
+        $auteur = cleanInput($_SESSION['id']);
+        $dateajout = cleanInput(date("Y-m-d H:i:s")); 
             
         if(isset($titre) && !empty($titre) && isset($contenu) && !empty($contenu)){
             if($this->manager->ajouterArticle($titre, $contenu, $auteur, $dateajout)){
@@ -84,7 +85,7 @@ class ArticleController {
 //Suppression d'un article
     public function deleteArticle($data){
         
-        $id = strip_tags($data['id']);
+        $id = cleanInput($data['id']);
         
         if ($this->manager->supprimerArticle($id)) {
             $msg = new Message("succes", "L'article a été supprimé !");
@@ -103,7 +104,51 @@ class ArticleController {
         return $vues;
         
     }
-
+//Fonction de recherche de contenu
+    public function searchContenu($search_term){
+        
+    //On filtre le terme de recherche
+        $search_term = cleanInput($_POST['search_term']);
+        
+        //Verification si le champ n'est pas vide
+        if(isset($search_term) && !empty($search_term)){
+            
+        //Si le terme de recherche est trop court on affiche un message
+            if( strlen( $search_term ) <= 1 ){
+                $msg = new Message("error","Le terme de recherche est trop court");
+                header('Location: '.$_SERVER['HTTP_REFERER']);
+            }
+            else{// Si le rerme de recherche n'est pas rtop court, on se dirige vers la page de resultat
+                
+               header('Location: ../blog/users/search-results.php?search='.$search_term); 
+            }
+        }
+        
+        else{// Si le champ de recherche est vide
+            $msg = new Message("error","Le champ de recherche est vide");
+            header('Location: '.$_SERVER['HTTP_REFERER']);
+        }
+    }
+    
+    //Afficher le nombre de resultat de la recherche
+    public function getNbSearch($search_term) {
+        
+        $search = new Search($search_term);
+        
+        $nbsearch = $this->manager->nbSearchResults($search->getCondition());
+        
+        return $nbsearch;
+    }
+    
+    //Aficcher les articles de la recherche
+    public function getSearchResults($search_term){
+        
+        $search = new Search($search_term);
+        
+        $search_results = $this->manager->searchTerm($search->getCondition());
+        
+        return $search_results;
+    }
 }
     
 
