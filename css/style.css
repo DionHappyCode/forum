@@ -67,8 +67,9 @@ and open the template in the editor.
     }
     .rep{
         color: #BE4100;
-        font-weight: 600;
+        font-weight: 100;
         display: inline-block;
+        margin-right: 10px;
     }
     
     .reptexte{
@@ -357,5 +358,13 @@ and open the template in the editor.
        font-family: 'Open Sans';
        font-size: 1.1em;   
     }
-    
-    
+    /*Resultat de recherche*/
+    .label-default {
+        background-color: rgb(253, 163, 87);
+        border-radius: 0;
+    }
+    .label { 
+        padding: .1em .4em .1em;
+        font-size: 100%;
+        font-weight: 100;
+    }
