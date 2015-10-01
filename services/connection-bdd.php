@@ -2,7 +2,7 @@
 try
 {
 	global $db;
-        $db = new PDO('mysql:host=localhost;dbname=news', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=news;charset=utf8', 'root', '');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         
 }
