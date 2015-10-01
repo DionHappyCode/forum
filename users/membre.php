@@ -44,8 +44,6 @@ and open the template in the editor.
                     </div>
                 </div>
                 
-                      
-                
                  <?php
                   
                    $articles = $artctrl->recupArticlesbyUser($_SESSION['id']);

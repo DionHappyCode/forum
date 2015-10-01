@@ -37,11 +37,15 @@ and open the template in the editor.
         <div class="wrapper">
             <?php include ("../commun/menu.php");?>
             <?php include_once '../commun/header.php'; ?>
-            
             <div class="container col-lg-7">
-                <h4 class="soutitre">
-                    <span class="glyphicon glyphicon-list"></span> Voici vos articles <span class="badge"><?php echo $artctrl->nbArticles($_SESSION['id']); ?></span> :   
-                </h4>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="soutitre">
+                       <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Vos articles <span class="badge"><?php echo $artctrl->nbArticles($_SESSION['id']); ?></span> : 
+                        </h4>
+                    </div>
+                </div>
+            
                  <?php
                   
                    $articles = $artctrl->recupArticlesbyUser($_SESSION['id']);
@@ -59,6 +63,13 @@ and open the template in the editor.
                 ?>
             </div>
             <aside id="admin" class="col-lg-5">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="soutitre2">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Votre profil :
+                        </h4>
+                    </div>
+                </div>
                  <div class="article">
                      
                      <?php 
@@ -144,10 +155,15 @@ and open the template in the editor.
                     </div>
                      <!-- /formulaire de modification du login-->
                 </div>
+                <div class="panel panel-default ">
+                    <div class="panel-body">
+                        <h4 class="soutitre2">
+                           <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Votre statistiques :
+                        </h4>
+                    </div>
+                </div>
                 <div class="article">
-                    <h3>
-                        Votre statistiques :
-                    </h3>
+                    
                     <h4>
                          Vous avez publié <?php echo $artctrl->nbArticles($_SESSION['id']); ?> articles : 
                     </h4>
@@ -168,19 +184,23 @@ and open the template in the editor.
                     <ol>
                         
                             <?php
-                               $reponses = $repctrl->recupReponsesbyAuteur($_SESSION['id']);
-                                foreach ($reponses as $reponse):
-                                        echo '<li>'.$reponse->getTitre().'</li>'
-                                            ;                    
-                                    endforeach;
-                            ?>
+                           $reponses = $repctrl->recupReponsesbyAuteur($_SESSION['id']);
+                            foreach ($reponses as $reponse):
+                                echo '<li><a href="article.php?id='.$reponse->getIdsujet().'#'.$reponse->getId().'">'.$reponse->getTitre().'</a></li>';                    
+                            endforeach;
+                        ?>
                          
                     </ol>    
                 </div>
+                <div class="panel panel-default ">
+                    <div class="panel-body">
+                        <h4 class="soutitre2">
+                           <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Statistiques du forum :
+                        </h4>
+                    </div>
+                </div>
                 <div class="article">
-                    <h3>
-                        Statistiques du forum :
-                    </h3>
+                    
                     <h4>
                         Il y a <span class="rep"><?php echo $artctrl->getNbArticles(); ?> articles</span> publiés.
                     </h4>
