@@ -66,11 +66,11 @@ class ReponseController {
     
     public function newReponse($data){
        
-        $titre = strip_tags($data['titre_reponse']);
-        $reponse = strip_tags($data['texte_reponse']);
-        $dateajout = strip_tags(date("Y-m-d H:i:s")); 
-        $auteur = strip_tags($_SESSION['id']);
-        $idsujet = strip_tags($_SESSION['articleid']);
+        $titre = cleanInput($data['titre_reponse']);
+        $reponse = cleanInput($data['texte_reponse']);
+        $dateajout = cleanInput(date("Y-m-d H:i:s")); 
+        $auteur = cleanInput($_SESSION['id']);
+        $idsujet = cleanInput($_SESSION['articleid']);
         
         if(isset($titre) && !empty($titre) && isset($reponse) && !empty($reponse)){
             if($this->manager->ajouterReponse($titre, $reponse, $dateajout, $auteur, $idsujet)){
@@ -90,12 +90,12 @@ class ReponseController {
     
     public function updateReponse($data){
         
-        $titre = strip_tags($data['titre_reponse']);
-        $reponse = strip_tags($data['texte_reponse']);
-        $datemodif = strip_tags(date("Y-m-d H:i:s")); 
-        $auteur = strip_tags($_SESSION['id']);
-        $idsujet = strip_tags($_SESSION['articleid']);
-        $idreponse = strip_tags($_SESSION['reponseid']);
+        $titre = cleanInput($data['titre_reponse']);
+        $reponse = cleanInput($data['texte_reponse']);
+        $datemodif = cleanInput(date("Y-m-d H:i:s")); 
+        $auteur = cleanInput($_SESSION['id']);
+        $idsujet = cleanInput($_SESSION['articleid']);
+        $idreponse = cleanInput($_SESSION['reponseid']);
         
         if(isset($titre) && !empty($titre) && isset($reponse) && !empty($reponse)){
             if($this->manager->modifierReponse($titre, $reponse, $datemodif, $auteur, $idsujet, $idreponse)){
@@ -114,7 +114,7 @@ class ReponseController {
     
     public function deleteReponse($data){
         
-        $id = strip_tags($data['id']);
+        $id = cleanInput($data['id']);
         
         if ($this->manager->supprimerReponse($id)) {
             $msg = new Message("succes", "La reponse a été supprimé !");
