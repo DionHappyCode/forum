@@ -127,4 +127,26 @@ class ArticleManager {
         return true;
     }
 
+//Fonction de retour le nombre de resultat de recherche
+    public function nbSearchResults($condition){
+        $req = $this->db->query("SELECT COUNT(id) FROM news WHERE $condition");
+        $req->setFetchMode(PDO::FETCH_ASSOC);
+        $data = $req->fetchColumn();
+          
+        return $data;
+    }
+//Requête pour la fonction de recherche
+    public function searchTerm($condition){
+        $req = $this->db->query("SELECT * FROM news WHERE $condition");
+        $req->setFetchMode(PDO::FETCH_ASSOC);
+        
+        $liste = $req->fetchAll();
+        $data = array();
+        
+        foreach($liste as $articleToCreate){
+            array_push($data, new Article($articleToCreate));
+        }
+        
+        return $data;// data est une collection d'objets
+    }
 }
