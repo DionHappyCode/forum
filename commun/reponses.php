@@ -22,11 +22,11 @@ echo '<div class="reponse">'
                 .'<p class="reptexte">'.nl2br($reponse->getTexte()).'</p>';
                 
                 if(isset($_SESSION['id']) && $_SESSION["type"]=="administrateur" ) {
-                    echo '<a href="update-reponse.php?reponseid='.$reponse->getId().'">Modifer</a>'
-                        .'<a href="../router.php?ctrl=Reponse&func=deleteReponse&id='.$reponse->getId().'">Supprimer</a>';
+                    echo '<a href="update-reponse.php?reponseid='.$reponse->getId().'" class="rep">Modifer</a>'
+                        .'<a href="../router.php?ctrl=Reponse&func=deleteReponse&id='.$reponse->getId().'" >Supprimer</a>';
                 }
                 elseif(isset($_SESSION['id']) && $reponse->getAuteur()==$_SESSION['id']){
-                    echo '<a href="update-reponse.php?reponseid='.$reponse->getId().'">Modifer</a>';
+                    echo '<a href="update-reponse.php?reponseid='.$reponse->getId().'" class="rep">Modifer</a>';
                 }
            echo '</div>'
                 . '</div>';                    
