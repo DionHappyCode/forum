@@ -27,9 +27,9 @@ class LoginController {
     public function inscrireMembre($data) {
         
         //Recuperation de données
-        $login = strip_tags($_POST['login']);
-        $password = strip_tags($_POST['password']);
-        $date = strip_tags(date("Y-m-d H:i:s"));
+        $login = cleanInput($_POST['login']);
+        $password = cleanInput($_POST['password']);
+        $date = cleanInput(date("Y-m-d H:i:s"));
         $type = "membre";
         $useron = "0";
         
@@ -63,8 +63,8 @@ class LoginController {
     public function LogIn($data){
         
         //Recuperation de données
-        $login = strip_tags($_POST['login']);
-        $password = strip_tags($_POST['password']);
+        $login = cleanInput($_POST['login']);
+        $password = cleanInput($_POST['password']);
         
         //Verification de champs de formulaire
         if(isset($login) && !empty($login) && isset($password) && !empty($password)){
@@ -102,9 +102,9 @@ class LoginController {
 //Modifier login
     public function modifierLogin($newlogin, $id) {
         //Recuperation de données
-        $login = strip_tags($_POST['login']);
-        $newlogin = strip_tags($_POST['newlogin']);
-        $conflogin = strip_tags($_POST['conflogin']);
+        $login = cleanInput($_POST['login']);
+        $newlogin = cleanInput($_POST['newlogin']);
+        $conflogin = cleanInput($_POST['conflogin']);
         $id = $_SESSION["id"];
         $login = $_SESSION["login"];
         
@@ -150,9 +150,9 @@ class LoginController {
     public function modifierPassword($password, $id) {
         
         //Recuperation de données
-        $password = strip_tags($_POST['password']);
-        $newpass = strip_tags($_POST['newpass']);
-        $confpass = strip_tags($_POST['confpass']);
+        $password = cleanInput($_POST['password']);
+        $newpass = cleanInput($_POST['newpass']);
+        $confpass = cleanInput($_POST['confpass']);
         $id = $_SESSION["id"];
         $login = $_SESSION["login"];
         
