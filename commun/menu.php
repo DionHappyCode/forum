@@ -72,9 +72,9 @@
                     ?>" class="navbar-link"><?php echo $ctrl->showAuteur($_SESSION['id']); ?></a>
             <?php } ?>  
         </p>
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right" role="search" action="../router.php?ctrl=Article&amp;func=searchContenu" method="POST">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Chercher">
+          <input type="text" class="form-control" placeholder="Chercher" name="search_term">
         </div>
         <button type="submit" class="btn btn-default">Valider</button>
       </form>
